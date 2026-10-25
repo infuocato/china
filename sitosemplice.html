@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>I miei prodotti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================
+   Palette e stile — cambia i colori nei token qui sotto
+   ========================================================== */
+:root {
+  --bg: #f3f0ff;
+  --surface: rgb(255 255 255 / .62);
+  --text: #1b1535;
+  --muted: #6b6490;
+  --line: rgb(124 58 237 / .16);
+  --g1: #7c3aed;   /* viola */
+  --g2: #ec4899;   /* rosa */
+  --g3: #06b6d4;   /* ciano */
+  --grad: linear-gradient(135deg, var(--g1), var(--g2) 55%, var(--g3));
+  --radius: 22px;
+  --font-display: "Sora", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body: "DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0817;
+    --surface: rgb(255 255 255 / .06);
+    --text: #f3f0ff;
+    --muted: #a59fc8;
+    --line: rgb(255 255 255 / .11);
+    --g1: #8b5cf6;
+    --g2: #f472b6;
+    --g3: #22d3ee;
+    color-scheme: dark;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { background: var(--bg); -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16.5px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Sfondo a sfumature sfocate */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(42rem 32rem at 8% -8%,  color-mix(in srgb, var(--g1) 38%, transparent), transparent 62%),
+    radial-gradient(36rem 30rem at 100% 8%, color-mix(in srgb, var(--g2) 30%, transparent), transparent 62%),
+    radial-gradient(44rem 32rem at 50% 112%, color-mix(in srgb, var(--g3) 28%, transparent), transparent 62%);
+}
+
+/* ---------- Layout ---------- */
+main {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: clamp(28px, 6vw, 72px) clamp(16px, 4vw, 32px) 90px;
+}
+
+.top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 6vw, 3.8rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.sub {
+  margin: 12px 0 0;
+  max-width: 34ch;
+  color: var(--muted);
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  line-height: 1.5;
+}
+
+.count {
+  margin: 0;
+  padding: 6px 14px;
+  font-size: .8125rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  white-space: nowrap;
+}
+
+/* ---------- Ricerca ---------- */
+.search {
+  width: 100%;
+  margin-bottom: 36px;
+  padding: 15px 20px;
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.search::placeholder { color: var(--muted); }
+
+.search:focus-visible {
+  border-color: var(--g1);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--g1) 20%, transparent),
+              0 10px 30px -10px color-mix(in srgb, var(--g2) 50%, transparent);
+}
+
+/* ---------- Griglia 3D ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+  gap: clamp(18px, 2.4vw, 30px);
+  perspective: 1300px;
+}
+
+/* ---------- Scheda ---------- */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  transform-style: preserve-3d;
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / .35) inset,
+    0 18px 36px -18px color-mix(in srgb, var(--g1) 55%, transparent),
+    0 4px 10px -4px rgb(0 0 0 / .12);
+  transition: transform .18s ease-out, box-shadow .3s ease, border-color .3s ease;
+  animation: rise .7s cubic-bezier(.2, .8, .2, 1) backwards;
+  animation-delay: calc(var(--i, 0) * 60ms);
+  will-change: transform;
+}
+
+.card:hover {
+  border-color: color-mix(in srgb, var(--g2) 45%, var(--line));
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / .35) inset,
+    0 34px 60px -22px color-mix(in srgb, var(--g1) 70%, transparent),
+    0 12px 30px -12px color-mix(in srgb, var(--g2) 55%, transparent);
+}
+
+/* Riflesso di luce che segue il mouse */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 0%), rgb(255 255 255 / .38), transparent 55%);
+  mix-blend-mode: soft-light;
+  transition: opacity .3s;
+}
+
+.card:hover::after { opacity: 1; }
+
+.img {
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: calc(var(--radius) - 8px);
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--g1) 18%, transparent),
+    color-mix(in srgb, var(--g3) 18%, transparent));
+  color: var(--muted);
+  font-size: .8125rem;
+  transform: translateZ(34px);
+  box-shadow: 0 18px 30px -14px rgb(20 10 60 / .45);
+}
+
+.img img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform .6s ease;
+}
+
+.card:hover .img img { transform: scale(1.07); }
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 10px 12px;
+  transform: translateZ(22px);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.price {
+  align-self: flex-start;
+  padding: 5px 14px;
+  font-family: var(--font-display);
+  font-size: .92rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+  background: var(--grad);
+  border-radius: 999px;
+  box-shadow: 0 8px 18px -6px color-mix(in srgb, var(--g2) 70%, transparent);
+  transform: translateZ(12px);
+}
+
+.desc {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: .94rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.empty {
+  grid-column: 1 / -1;
+  padding: 70px 0;
+  text-align: center;
+  color: var(--muted);
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(26px) rotateX(10deg); }
+}
+
+/* ---------- Accessibilità ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+@media (max-width: 520px) {
+  .top { flex-direction: column; align-items: flex-start; gap: 10px; }
+}
+</style>
+</head>
+<body>
+<main>
+<header class="top">
+  <div>
+    <h1 id="titolo"></h1>
+    <p class="sub" id="sub"></p>
+  </div>
+  <p class="count" id="count"></p>
+</header>
+<input id="q" class="search" type="search" placeholder="Cerca un prodotto…" aria-label="Cerca un prodotto">
+<div id="list" class="grid"></div>
+</main>
+
+<script>
+/* ============================================================
+   CONFIG — aggiungi i tuoi prodotti qui sotto.
+   Copia un blocco { ... }, incolla dopo la virgola e modificalo.
+   ============================================================ */
+const SITO = {
+  titolo: "I miei prodotti",
+  sottotitolo: "Alla fine dell ordine verra applicato il costo della spedizione, che varia in base al peso"
+};
+
+const PRODOTTI = [
+  {
+    nome: "Calze 5 paia",
+    prezzo: 8,
+    immagine: "https://media.usfans.com/2026/10/25/145737/5645aad9-08fe-41d6-8b26-b23d8c1f0b69.jpg",
+    descrizione: "Marche disponibili: Nike, Adidas, Puma, Under Armor, Champion"
+  },
+  {
+    nome: "Calze Ralph Lauren 6 paia",
+    prezzo: 10,
+    immagine: "https://img.alicdn.com/img/ibank/O1CN013dpQK11oKP0bb50Iy_!!2220585885206-0-cib.jpg_1200x1200q80.jpg_.webp",
+    descrizione: "Disponibili nere e bianche"
+  },
+  {
+    nome: "Air Force 1",
+    prezzo: 30,
+    immagine: "https://media.usfans.com/upload/ori/2026/10/15/162627/041668b8-26ac-4a66-bca7-d5d59a1a1304.jpg?x-oss-process=image/auto-orient,1/watermark,image_d2F0ZXJtYXJrLnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSxQXzIw,g_ne,x_1,y_20",
+    descrizione: "Disponibili nere, bianche, supreme e altri stili"
+  },
+  {
+    nome: "Tuta Essentials",
+    prezzo: 15,
+    immagine: "https://cbu01.alicdn.com/img/ibank/O1CN01ILXvIR1aXJSt7vijz_!!2214597703339-0-cib.jpg",
+    descrizione: "Disponibile maglia e pantalone, tuta completa 30€"
+  },
+  {
+    nome: "Air Jordan 1 Travis",
+    prezzo: 60,
+    immagine: "https://media.usfans.com/2026/09/07/210656/c81e8a4d-373d-4a9d-ac2e-2405eb3f9739.jpg",
+    descrizione: "Disponibile anche versione spiderman, off-white e colorazioni standard"
+  },
+   {
+    nome: "Timberland X Supreme",
+    prezzo: 72,
+    immagine: "https://media.usfans.com/2026/10/18/235549/d74bcb56-65e9-417d-b8d3-ca5160dca785.jpg",
+    descrizione: "Disponibile colore giallo classico e nere"
+  },
+  {
+    nome: "Jordan low 1 Travis",
+    prezzo: 60,
+    immagine: "https://media.usfans.com/2026/07/23/184515/6929e67f-32b6-49b4-ba08-3dec4dc212f5.jpg",
+    descrizione: "Disponibile in altri stili"
+  },
+  {
+    nome: "Jeans Dior",
+    prezzo: 20,
+    immagine: "https://media.usfans.com/2026/10/24/183212/16a86a22-595b-4c76-95b3-4bbe8c145526.jpg",
+    descrizione: "Da s a xxl"
+  },
+  {
+    nome: "Tuta Tech Nike",
+    prezzo: 30,
+    immagine: "https://media.usfans.com/2026/10/25/175024/9fc0732c-4656-4aa0-9f3f-cc8394a8d6cc.jpg",
+    descrizione: "Disponibile nera e bianca, 15€ singola parte, 30€ completa"
+  },
+  {
+    nome: "Occhiale Viper",
+    prezzo: 5,
+    immagine: "https://media.usfans.com/2026/09/18/133932/1faece61-d5e8-4bc1-8c01-5ccb0b826c42.jpg",
+    descrizione: "Disponibile in moltissime colorazioni"
+  },
+  {
+    nome: "Tacco Saint Laurent",
+    prezzo: 50,
+    immagine: "https://media.usfans.com/upload/ori/2026/10/12/162153/e429fd96-87ad-4a57-873b-888348490b1c.jpg?x-oss-process=image/auto-orient,1/watermark,image_d2F0ZXJtYXJrLnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSxQXzIw,g_ne,x_1,y_20",
+    descrizione: "Disponibile dal 33 al 45"
+  },
+   {
+    nome: "Jeans Loro Piana",
+    prezzo: 25,
+    immagine: "https://media.usfans.com/2026/10/24/182702/2f00671c-8559-497b-8a7b-5e1627e1781a.jpg",
+    descrizione: "Disponibile bianco e nero"
+  },
+   {
+    nome: "Impermeabile antivento Arc'teryx",
+    prezzo: 40,
+    immagine: "https://media.usfans.com/upload/ori/2026/10/01/092907/b084baaa-f822-44ce-a25a-3e54191e3cc6.jpg?x-oss-process=image/auto-orient,1/watermark,image_d2F0ZXJtYXJrLnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSxQXzIw,g_ne,x_1,y_20",
+    descrizione: "Disponibile nero-bianco-celeste "
+  },
+   {
+    nome: "Maglietta The North Face",
+    prezzo: 10,
+    immagine: "https://media.usfans.com/2026/10/24/184650/9bda7c6e-7052-4846-81cf-df3ce9954657.jpg",
+    descrizione: "Disponibile in vari stili"
+  },
+];
+/* ============================================================ */
+
+const $ = id => document.getElementById(id);
+const esc = s => { const d = document.createElement('div'); d.textContent = s ?? ''; return d.innerHTML; };
+
+$('titolo').textContent = SITO.titolo;
+$('sub').textContent = SITO.sottotitolo;
+document.title = SITO.titolo;
+
+function render(){
+  const q = $('q').value.trim().toLowerCase();
+  const shown = PRODOTTI.filter(p => ((p.nome || '') + ' ' + (p.descrizione || '')).toLowerCase().includes(q));
+  $('count').textContent = shown.length + (shown.length === 1 ? ' prodotto' : ' prodotti');
+  if (!shown.length){ $('list').innerHTML = '<div class="empty">Nessun prodotto trovato.</div>'; return; }
+  $('list').innerHTML = shown.map((p, i) => `
+    <div class="card" style="--i:${i}">
+      <div class="img">${/^https?:\/\//i.test(p.immagine || '') ? `<img src="${esc(p.immagine)}" alt="${esc(p.nome)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.textContent='Immagine non disponibile'">` : 'Nessuna immagine'}</div>
+      <div class="body">
+        <div class="name">${esc(p.nome)}</div>
+        <div class="price">€ ${Number(p.prezzo).toFixed(2).replace('.', ',')}</div>
+        <div class="desc">${esc(p.descrizione)}</div>
+      </div>
+    </div>`).join('');
+}
+$('q').oninput = render;
+
+/* Effetto 3D: la scheda si inclina seguendo il mouse */
+if (matchMedia('(hover: hover)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const L = $('list');
+  L.addEventListener('pointermove', e => {
+    const c = e.target.closest('.card'); if (!c) return;
+    const r = c.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+    c.style.setProperty('--ry', ((x - .5) * 14).toFixed(2) + 'deg');
+    c.style.setProperty('--rx', ((.5 - y) * 14).toFixed(2) + 'deg');
+    c.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+    c.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+  });
+  L.addEventListener('pointerout', e => {
+    const c = e.target.closest('.card');
+    if (c && !c.contains(e.relatedTarget)) ['--rx', '--ry', '--mx', '--my'].forEach(v => c.style.removeProperty(v));
+  });
+}
+render();
+</script>
+</body>
+</html>
