@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Prodotto — DRAGON-GATE</title>
+<meta name="description" id="pageDesc" content="Dettaglio prodotto.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="site-nav"></div>
+
+<main id="main">
+  <div class="container" id="pdWrap"></div>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="js/config.js"></script>
+<script src="js/products.js"></script>
+<script src="js/main.js"></script>
+<script>
+  (function () {
+    const cfg = window.SITE_CONFIG;
+    const params = new URLSearchParams(location.search);
+    const slug = params.get("slug");
+    const p = window.ProductUtils.getProductBySlug(slug);
+    const wrap = document.getElementById("pdWrap");
+
+    if (!p) {
+      wrap.innerHTML = `
+        <div class="empty-state" style="padding:120px 0;">
+          <h3>Prodotto non trovato</h3>
+          <p>L'articolo che cerchi potrebbe non essere più disponibile.</p>
+          <a class="btn btn-primary" href="index.html">Torna allo shop</a>
+        </div>`;
+      return;
+    }
+
+    document.title = `${p.nome} — ${cfg.brandName}`;
+    document.getElementById("pageDesc").setAttribute("content", p.descrizione || p.nome);
+
+    const price = window.ProductUtils.formatPrice(p.prezzo);
+    const imgs = p.immagini && p.immagini.length ? p.immagini : [""];
+
+    wrap.innerHTML = `
+      <div class="pd">
+        <div>
+          <div class="pd-gallery-main">
+            <img id="pdMainImg" src="${imgs[0]}" alt="${p.nome}">
+          </div>
+          ${
+            imgs.length > 1
+              ? `<div class="pd-thumbs">
+                  ${imgs
+                    .map(
+                      (im, i) =>
+                        `<button type="button" class="${i === 0 ? "active" : ""}" data-img="${im}" aria-label="Immagine ${i + 1}"><img src="${im}" alt=""></button>`
+                    )
+                    .join("")}
+                </div>`
+              : ""
+          }
+        </div>
+        <div>
+          <p class="pd-category">${p.categoria}${p.piattaforma ? " · " + p.piattaforma : ""}</p>
+          <h1>${p.nome}</h1>
+          <p class="pd-price">${price}</p>
+          <div class="pd-tags">
+            ${(p.tag || []).map((t) => `<span class="pill pill-accent">${t}</span>`).join("")}
+          </div>
+          <p class="pd-desc">${p.descrizione || ""}</p>
+
+          <div class="pd-block">
+            <h3>Taglie disponibili</h3>
+            <div class="pd-chips">${(p.taglie || []).map((s) => `<span class="pd-chip">${s}</span>`).join("")}</div>
+          </div>
+          <div class="pd-block">
+            <h3>Colori</h3>
+            <div class="pd-chips">${(p.colori || []).map((c) => `<span class="pd-chip">${c}</span>`).join("")}</div>
+          </div>
+
+          <div class="pd-actions">
+            ${
+              p.linkPiattaforma
+                ? `<a class="btn btn-primary" href="${p.linkPiattaforma}" target="_blank" rel="noopener">Vedi inserzione</a>`
+                : ""
+            }
+          </div>
+
+          <div class="pd-meta-row"><span>Stato</span><span>${p.stato === "disponibile" ? "Disponibile" : p.stato}</span></div>
+          ${p.piattaforma ? `<div class="pd-meta-row"><span>Piattaforma</span><span>${p.piattaforma}</span></div>` : ""}
+        </div>
+      </div>
+    `;
+
+    wrap.querySelectorAll(".pd-thumbs button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.getElementById("pdMainImg").src = btn.dataset.img;
+        wrap.querySelectorAll(".pd-thumbs button").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+      });
+    });
+  })();
+</script>
+</body>
+</html>
