@@ -14,7 +14,7 @@ window.SITE_CONFIG = {
   // ---- BRAND ----
   brandName: "DRAGON-GATE",
   tagline: "Where quality meets savings",
-  domain: "https://www.tuobrand.com", // usato per SEO / sitemap — aggiorna prima del deploy
+  domain: "", // usato per SEO / sitemap — aggiorna prima del deploy
 
   // ---- COLORE D'ACCENTO ----
   // Un solo colore d'accento discreto. Cambia solo questo valore hex.
@@ -25,9 +25,9 @@ window.SITE_CONFIG = {
 
   // ---- SOCIAL ----
   social: {
-    instagram: "https://instagram.com/tuobrand",
-    tiktok: "https://tiktok.com/@tuobrand",
-    youtube: "https://youtube.com/@tuobrand",
+    instagram: "",
+    tiktok: "",
+    youtube: "",
   },
 
   // ---- CATEGORIE (estendibile: basta aggiungere una voce qui) ----
@@ -47,11 +47,8 @@ window.SITE_CONFIG = {
   // ---- TAG DISPONIBILI ----
   tags: [
     "VERIFIED QC",
-    "STREETWEAR",
-    "OLD MONEY",
     "DONNA",
     "UOMO",
-    "SPORT",
     "UNISEX",
     "PREMIUM",
   ],
@@ -67,7 +64,7 @@ window.SITE_CONFIG = {
     {
       slug: "Racing Jacket",
       nome: "Racing Jacket",
-      prezzo: 30,
+      prezzo: 50,
       categoria: "Giacche",
       tag: ["VERIFIED QC", "UNISEX"],
       taglie: ["S", "M", "L", "XL", "XXL"],
@@ -93,7 +90,7 @@ window.SITE_CONFIG = {
     {
       slug: "Felpa NikeXStussy",
       nome: "Felpa Nike X Stussy",
-      prezzo: 30,
+      prezzo: 40,
       categoria: "Felpe",
       tag: ["VERIFIED QC", "UNISEX"],
       taglie: ["S", "M", "L", "XL"],
@@ -114,7 +111,7 @@ window.SITE_CONFIG = {
     {
       slug: "Maglietta The North Face",
       nome: "Maglietta The North Face",
-      prezzo: 30,
+      prezzo: 25,
       categoria: "T-Shirt",
       tag: ["UNISEX"],
       taglie: ["S", "M", "L", "XL"],
@@ -147,7 +144,7 @@ window.SITE_CONFIG = {
         "https://media.usfans.com/upload/ori/2026/10/09/162805/1c66a1ba-34f5-4436-b305-3f3ee92767b7.jpg?x-oss-process=image/auto-orient,1/watermark,image_d2F0ZXJtYXJrLnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSxQXzIw,g_ne,x_1,y_20",
       ],
       descrizione:
-        "Fit Standard | Materiale: Jeans ",
+        "Fit Standard | Materiale: Jeans",
       stato: "disponibile",
       piattaforma: "",
       linkPiattaforma: "",
@@ -176,7 +173,7 @@ window.SITE_CONFIG = {
     {
       slug: "Calzini Nike",
       nome: "Calzini Nike",
-      prezzo: 15,
+      prezzo: 12,
       categoria: "Altro",
       tag: ["UNISEX"],
       taglie: ["S", "M", "L"],
@@ -194,9 +191,9 @@ window.SITE_CONFIG = {
     {
       slug: "Tuta Tech Nike",
       nome: "Tuta Tech Nike",
-      prezzo: 15,
+      prezzo: 70,
       categoria: "Tuta",
-      tag: ["UNISEX"],
+      tag: ["UNISEX", "PREMIUM"],
       taglie: ["S", "M", "L",   "XL"],
       colori: ["Nero", "Bianco"],
       immagini: [
@@ -214,9 +211,9 @@ window.SITE_CONFIG = {
      {
       slug: "Tuta Mertra",
       nome: "Tuta Mertra",
-      prezzo: 15,
+      prezzo: 60,
       categoria: "Tuta",
-      tag: ["UNISEX"],
+      tag: ["UNISEX", "PREMIUM"],
       taglie: ["S", "M", "L",   "XL"],
       colori: ["Nero", "Bianco"],
       immagini: [
@@ -234,7 +231,7 @@ window.SITE_CONFIG = {
     {
       slug: "Giubbotto Arcteryx",
       nome: "Giubbotto Arcteryx",
-      prezzo: 60,
+      prezzo: 50,
       categoria: "Giacche",
       tag: ["UNISEX"],
       taglie: ["S", "M", "L", "XL", "XXL"],
@@ -246,7 +243,7 @@ window.SITE_CONFIG = {
         "https://media.usfans.com/2026/09/18/210917/88518ced-072d-4bee-bbae-b1a763d4d9f5.jpg", 
       ],
       descrizione:
-        "Giubbotto antivento per primavera/autunno | Fit Standard | Materiale: Idrofobico",
+        "Antivento goratex | Fit Standard | Materiale: Idrofobico",
       stato: "disponibile",
       piattaforma: "",
       linkPiattaforma: "",
@@ -255,7 +252,7 @@ window.SITE_CONFIG = {
      {
       slug: "Maglione Polo Ralph Lauren",
       nome: "Maglione Polo Ralph Lauren",
-      prezzo: 60,
+      prezzo: 40,
       categoria: "Felpe",
       tag: ["UNISEX", "PREMIUM"],
       taglie: ["S", "M", "L", "XL", "XXL"],
@@ -309,7 +306,7 @@ window.SITE_CONFIG = {
         "https://media.usfans.com/upload/ori/2026/10/09/171829/ac280a2e-d336-4a1f-b7c2-bdfed8feb0fa.jpg?x-oss-process=image/auto-orient,1/watermark,image_d2F0ZXJtYXJrLnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSxQXzIw,g_ne,x_1,y_20",
       ],
       descrizione:
-        "Maglietta con ricamo | Fit Standard | Materiale: 100% cotone",
+        "Fit Standard | Materiale: 100% cotone",
       stato: "disponibili altri stili",
       piattaforma: "",
       linkPiattaforma: "",
@@ -318,7 +315,7 @@ window.SITE_CONFIG = {
     {
       slug: "Felpa Fiori",
       nome: "Felpa Fiori",
-      prezzo: 70,
+      prezzo: 30,
       categoria: "Felpe",
       tag: ["UOMO", "PREMIUM"],
       taglie: ["S", "M", "L", "XL"],
@@ -330,7 +327,7 @@ window.SITE_CONFIG = {
         "https://media.usfans.com/2026/09/15/191710/a554a927-8f19-4579-aad9-35e35d2ed0e9.jpg",
       ],
       descrizione:
-        "Maglione clean | Fit leggermente largo | Materiale: 100% cotone | CHIEDERE FOTO",
+        "Felpa con fiori | Fit standard | Materiale: 100% cotone",
       stato: "disponibile",
       piattaforma: "",
       linkPiattaforma: "",
@@ -339,7 +336,7 @@ window.SITE_CONFIG = {
     {
       slug: "Pantalone Amiri",
       nome: "Pantalone Amiri",
-      prezzo: 25,
+      prezzo: 40,
       categoria: "Pantaloni",
       tag: ["UOMO", "PREMIUM"],
       taglie: ["S", "M", "L", "XL", "XXL"],
@@ -360,7 +357,7 @@ window.SITE_CONFIG = {
      {
       slug: "Pantalone Amiri2",
       nome: "Pantalone Amiri Slim",
-      prezzo: 25,
+      prezzo: 55,
       categoria: "Jeans",
       tag: ["UOMO", "PREMIUM"],
       taglie: ["S", "M", "L", "XL", "XXL"],
@@ -380,7 +377,7 @@ window.SITE_CONFIG = {
      {
       slug: "Bapestar",
       nome: "Bapestar AF1",
-      prezzo: 25,
+      prezzo: 45,
       categoria: "Scarpe",
       tag: ["UNISEX"],
       taglie: ["S", "M", "L", "XL", "XXL"],
@@ -395,6 +392,26 @@ window.SITE_CONFIG = {
       descrizione:
         "Air force 1 X bape | Fit Standard | Taglia: 36-48",
       stato: "disponibili altri stili",
+      piattaforma: "",
+      linkPiattaforma: "",
+      dataInserimento: "2026-09-01",
+    },
+    {
+      slug: "Nike AF1 X Supreme",
+      nome: "Nike AF1 X Supreme",
+      prezzo: 50,
+      categoria: "Scarpe",
+      tag: ["UNISEX", "VERIFIED QC"],
+      taglie: ["S", "M", "L", "XL", "XXL"],
+      colori: ["Bianco", "Nero"],
+      immagini: [
+        "https://media.usfans.com/2026/09/20/172300/b09d39b7-2c23-4ea5-b5f6-c3cade6263c4.jpg",
+        "https://media.usfans.com/2026/09/20/172300/1eebb2c8-676d-4d8e-be32-41880955ed72.jpg",
+        "https://media.usfans.com/2026/09/20/172300/5c7773dc-acb4-4a21-82f5-2c27a738696e.jpg",
+      ],
+      descrizione:
+        "Af1 | Fit Standard | Taglia: 36-47",
+      stato: "disponibile",
       piattaforma: "",
       linkPiattaforma: "",
       dataInserimento: "2026-09-01",
@@ -423,7 +440,7 @@ window.SITE_CONFIG = {
      {
       slug: "Raf Simon",
       nome: "Raf Simon",
-      prezzo: 35,
+      prezzo: 60,
       categoria: "Scarpe",
       tag: ["UOMO",],
       taglie: ["M", "L", "XL", "XXL"],
@@ -444,7 +461,7 @@ window.SITE_CONFIG = {
     {
       slug: "Loboutin Uomo",
       nome: "Loboutin Uomo",
-      prezzo: 42,
+      prezzo: 55,
       categoria: "Scarpe",
       tag: ["UOMO", "VERIFIED QC"],
       taglie: ["S", "M", "L", "XL"],
@@ -465,7 +482,7 @@ window.SITE_CONFIG = {
     {
       slug: "Nike Air Max 95",
       nome: "Nike Air Max 95",
-      prezzo: 35,
+      prezzo: 55,
       categoria: "Scarpe",
       tag: ["UNISEX", "VERIFIED QC"],
       taglie: ["S", "M", "L", "XL", "XXL"],
@@ -486,7 +503,7 @@ window.SITE_CONFIG = {
      {
       slug: "Dior b22",
       nome: "Dior b22",
-      prezzo: 35,
+      prezzo: 50,
       categoria: "Scarpe",
       tag: ["UNISEX", "VERIFIED QC"],
       taglie: ["S", "M", "L", "XL", "XXL"],
