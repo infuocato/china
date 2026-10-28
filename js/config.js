@@ -64,7 +64,7 @@ window.SITE_CONFIG = {
     {
       slug: "Racing Jacket",
       nome: "Racing Jacket",
-      prezzo: 50,
+      prezzo: 45,
       categoria: "Giacche",
       tag: ["VERIFIED QC", "UNISEX"],
       taglie: ["S", "M", "L", "XL", "XXL"],
@@ -113,7 +113,7 @@ window.SITE_CONFIG = {
       nome: "Maglietta The North Face",
       prezzo: 25,
       categoria: "T-Shirt",
-      tag: ["UNISEX"],
+      tag: ["UNISEX","VERIFIED QC"],
       taglie: ["S", "M", "L", "XL"],
       colori: ["Altro"],
       immagini: [
@@ -135,7 +135,7 @@ window.SITE_CONFIG = {
       nome: "Jeans Corteiz",
       prezzo: 55,
       categoria: "Jeans",
-      tag: ["UNISEX", "PREMIUM"],
+      tag: ["UNISEX", "PREMIUM","VERIFIED QC"],
       taglie: ["S", "M", "L", "XL"],
       colori: ["Nero", "Grigio", "Altro"],
       immagini: [
@@ -155,7 +155,7 @@ window.SITE_CONFIG = {
       nome: "Mutande Suprime",
       prezzo: 20,
       categoria: "Intimo",
-      tag: ["UOMO"],
+      tag: ["UOMO","VERIFIED QC"],
       taglie: ["S", "M", "L", "XL"],
       colori: ["Nero", "Grigio", "Altro"],
       immagini: [
@@ -175,7 +175,7 @@ window.SITE_CONFIG = {
       nome: "Calzini Nike",
       prezzo: 12,
       categoria: "Altro",
-      tag: ["UNISEX"],
+      tag: ["UNISEX","VERIFIED QC"],
       taglie: ["S", "M", "L"],
       colori: ["Nero", "Grigio", "Bianco"],
       immagini: [
@@ -193,7 +193,7 @@ window.SITE_CONFIG = {
       nome: "Tuta Tech Nike",
       prezzo: 70,
       categoria: "Tuta",
-      tag: ["UNISEX", "PREMIUM"],
+      tag: ["UNISEX", "PREMIUM","VERIFIED QC"],
       taglie: ["S", "M", "L",   "XL"],
       colori: ["Nero", "Bianco"],
       immagini: [
@@ -213,7 +213,7 @@ window.SITE_CONFIG = {
       nome: "Tuta Mertra",
       prezzo: 60,
       categoria: "Tuta",
-      tag: ["UNISEX", "PREMIUM"],
+      tag: ["UNISEX", "PREMIUM","VERIFIED QC"],
       taglie: ["S", "M", "L",   "XL"],
       colori: ["Nero", "Bianco"],
       immagini: [
@@ -233,7 +233,7 @@ window.SITE_CONFIG = {
       nome: "Giubbotto Arcteryx",
       prezzo: 50,
       categoria: "Giacche",
-      tag: ["UNISEX"],
+      tag: ["UNISEX","VERIFIED QC"],
       taglie: ["S", "M", "L", "XL", "XXL"],
       colori: ["Nero", "Bianco"],
       immagini: [
@@ -254,7 +254,7 @@ window.SITE_CONFIG = {
       nome: "Maglione Polo Ralph Lauren",
       prezzo: 40,
       categoria: "Felpe",
-      tag: ["UNISEX", "PREMIUM"],
+      tag: ["UNISEX", "PREMIUM","VERIFIED QC"],
       taglie: ["S", "M", "L", "XL", "XXL"],
       colori: ["Grigio"],
       immagini: [
@@ -317,7 +317,7 @@ window.SITE_CONFIG = {
       nome: "Felpa Fiori",
       prezzo: 30,
       categoria: "Felpe",
-      tag: ["UOMO", "PREMIUM"],
+      tag: ["UOMO", "PREMIUM","VERIFIED QC"],
       taglie: ["S", "M", "L", "XL"],
       colori: ["Nero, Bianco, Grigio, Verde, Rosso, Blu, Altro"],
       immagini: [
@@ -338,7 +338,7 @@ window.SITE_CONFIG = {
       nome: "Pantalone Amiri",
       prezzo: 40,
       categoria: "Pantaloni",
-      tag: ["UOMO", "PREMIUM"],
+      tag: ["UOMO", "PREMIUM","VERIFIED QC"],
       taglie: ["S", "M", "L", "XL", "XXL"],
       colori: ["Nero", "Bianco"],
       immagini: [
@@ -359,7 +359,7 @@ window.SITE_CONFIG = {
       nome: "Pantalone Amiri Slim",
       prezzo: 55,
       categoria: "Jeans",
-      tag: ["UOMO", "PREMIUM"],
+      tag: ["UOMO", "PREMIUM","VERIFIED QC"],
       taglie: ["S", "M", "L", "XL", "XXL"],
       colori: ["Nero", "Bianco"],
       immagini: [
@@ -379,7 +379,7 @@ window.SITE_CONFIG = {
       nome: "Bapestar AF1",
       prezzo: 45,
       categoria: "Scarpe",
-      tag: ["UNISEX"],
+      tag: ["UNISEX","VERIFIED QC"],
       taglie: ["S", "M", "L", "XL", "XXL"],
       colori: ["Altro"],
       immagini: [
@@ -442,7 +442,7 @@ window.SITE_CONFIG = {
       nome: "Raf Simon",
       prezzo: 60,
       categoria: "Scarpe",
-      tag: ["UOMO",],
+      tag: ["UNISEX","VERIFIED QC"],
       taglie: ["M", "L", "XL", "XXL"],
       colori: ["Bianco", "Nero", "Grigio", "Verde"],
       immagini: [
@@ -516,6 +516,70 @@ window.SITE_CONFIG = {
       ],
       descrizione:
         "Dior b22 | Fit Standard | Taglia: 36-47",
+      stato: "disponibili altri stili",
+      piattaforma: "",
+      linkPiattaforma: "",
+      dataInserimento: "2026-09-01",
+    },
+
+    {
+      slug: "Guanti Alpinestars",
+      nome: "Guanti Alpinestars",
+      prezzo: 35,
+      categoria: "Altro",
+      tag: ["UNISEX"],
+      taglie: ["S", "M", "L", "XL", "XXL"],
+      colori: ["Nero", "Bianco"],
+      immagini: [
+        "https://media.usfans.com/2026/09/12/211705/2987e927-4207-45c8-8e71-fd41f86a6723.jpg",
+        "https://media.usfans.com/2026/09/12/211705/72e6273c-eea1-4c75-b9cd-ec88a0ebb329.jpg",
+        "https://media.usfans.com/2026/09/12/211705/4d1414e9-ce47-45b4-a173-075ff68c28fb.jpg",
+      ],
+      descrizione:
+        "Guanti da moto con nocche in carbonio",
+      stato: "disponibile",
+      piattaforma: "",
+      linkPiattaforma: "",
+      dataInserimento: "2026-09-01",
+    },
+
+    {
+      slug: "Cappelino Racing",
+      nome: "Cappelino Racing",
+      prezzo: 15,
+      categoria: "Altro",
+      tag: ["UNISEX"],
+      taglie: ["S", "M", "L", "XL", "XXL"],
+      colori: ["Nero", "Bianco"],
+      immagini: [
+        "https://media.usfans.com/2026/09/21/135909/364467a7-0980-40cb-be49-39ca9a6b718a.jpg",
+        "https://media.usfans.com/2026/09/21/135909/ec336637-bec1-4522-9762-96895b8f0566.jpg",
+        "https://media.usfans.com/2026/09/21/135909/391fef0e-021a-44d2-9d69-dbd898654007.jpg",
+      ],
+      descrizione:
+        "Disponibili vari marchi di f1 e moto",
+      stato: "disponibile",
+      piattaforma: "",
+      linkPiattaforma: "",
+      dataInserimento: "2026-09-01",
+    },
+
+     {
+      slug: "Giacca racing pelle",
+      nome: "Giacca racing pelle",
+      prezzo: 50,
+      categoria: "Giacche",
+      tag: ["UNISEX"],
+      taglie: ["S", "M", "L", "XL", "XXL"],
+      colori: ["Altro"],
+      immagini: [
+        "https://media.usfans.com/2026/10/25/133843/580f99ab-ba8a-4a30-8a96-445859cdc662.jpg",
+        "https://media.usfans.com/2026/10/25/133843/b92fcc8a-634d-49b7-805a-4c320ea56d56.jpg", 
+        "https://media.usfans.com/2026/10/25/133843/0e2878ab-1a3c-441a-ac36-8653986fa2e6.jpg",
+        "https://media.usfans.com/2026/10/25/133843/c40f1151-2e87-419b-96ff-2871fa882e86.jpg",
+      ],
+      descrizione:
+        "Disponibile di altri marchi | Fit Standard",
       stato: "disponibili altri stili",
       piattaforma: "",
       linkPiattaforma: "",
